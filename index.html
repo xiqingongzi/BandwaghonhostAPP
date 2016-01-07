@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+    </script> 
+    </script> 
+    </script>
+    
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-pengyouquan
+sui-pull-left"  id="setting"></a>
+	    <h1 class="mui-title">瓦工助手</h1>
+	</header>
+	<div class="mui-content">
+	               <ul class="mui-table-view">
+	                   <li class="mui-table-view-cell">
+	                       <a class=>
+	                        主机名：<span class="mui-badge mui-badge-purple" id='hostname'></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	           		 IP:<span class="mui-badge mui-badge-purple" id="ip"></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	           		 SSH端口:<span class="mui-badge mui-badge-purple" id="ssh"></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	           		 密码:<span class="mui-badge mui-badge-purple" id="password"></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   月流量:<span class="mui-badge mui-badge-purple" id="bandwidth"></span>
+
+	                       </a>
+	                   </li>
+	                   						<li class="mui-table-view-cell">
+	                       <a class="">
+	                   已用流量:<span class="mui-badge mui-badge-purple" id="usewidth"></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   重置日期:<span class="mui-badge mui-badge-purple" id='refresh'></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   当前负载:<span class="mui-badge mui-badge-purple" id='load'></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   节点:<span class="mui-badge mui-badge-purple" id='location'></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   操作系统:<span class="mui-badge mui-badge-purple" id='os'></span>
+
+	                       </a>
+	                   </li>
+	                   <li class="mui-table-view-cell">
+	                       <a class="">
+	                   当前状态:<span class="mui-badge mui-badge-purple" id='status'></span>
+	                       </a>
+	                   </li>
+	               </ul>
+
+	    
+	</div>
+	    <nav class="mui-bar mui-bar-tab">
+	        <a class="mui-tab-item mui-active" id="tabrefresh">
+	            <span class="mui-icon mui-icon-home"></span>
+	            <span class="mui-tab-label">刷新</span>
+	        </a>
+	        <a class="mui-tab-item">
+	            <span class="mui-icon mui-icon-checkmarkempty" id="tabstart"></span>
+	            <span class="mui-tab-label">启动</span>
+	        </a>
+	        <a class="mui-tab-item">
+	            <span class="mui-icon mui-icon-closeempty" id="tabstop"></span>
+	            <span class="mui-tab-label">关机</span>
+	        </a>
+	        <a class="mui-tab-item">
+	            <span class="mui-icon mui-icon-refresh" id="tabrestart"></span>
+	            <span class="mui-tab-label">重启</span>
+	        </a>
+	    </nav>
+<script>
+
+mui.toast('正在请求数据....大概需要1-3秒请您耐心等候！');
+document.querySelector('#tabrestart').addEventListener('tap',function(){
+	mui.toast('正在发送重启请求！')
+	mui.post('http://cloud.bmob.cn/4c7d88c789a79ea7/getRestart',{veid:localStorage.id,key:localStorage.keys},function(data){
+		var dataObj=eval("("+data+")");
+		if (dataObj.error == 0)
+		{
+			mui.toast('重启成功！请刷新查看状态')
+		}else
+		{
+			mui.toast('重启失败！')
+		}
+	})
+})
+document.querySelector('#tabstart').addEventListener('tap',function(){
+	mui.toast('正在发送启动请求！')
+	mui.post('http://cloud.bmob.cn/4c7d88c789a79ea7/getStart',{veid:localStorage.id,key:localStorage.keys},function(data){
+		var dataObj=eval("("+data+")");
+		if (dataObj.error == 0)
+		{
+			mui.toast('启动成功！请刷新查看状态')
+		}else
+		{
+			mui.toast('启动失败！')
+		}
+	})
+})
+document.querySelector('#tabstop').addEventListener('tap',function(){
+	mui.toast('正在发送停止请求！')
+	mui.post('http://cloud.bmob.cn/4c7d88c789a79ea7/getStop',{veid:localStorage.id,key:localStorage.keys},function(data){
+		var dataObj=eval("("+data+")");
+		if (dataObj.error == 0)
+		{
+			
+			mui.toast('停止成功！请刷新查看状态')
+		}else
+		{
+			mui.toast('停止失败！')
+		}
+	})
+	
+})
+document.querySelector('#tabrefresh').addEventListener('tap',function(){
+	mui.toast('正在刷新！');
+	mui.post('http://cloud.bmob.cn/4c7d88c789a79ea7/getLiveInfo',{veid:localStorage.id,key:localStorage.keys},function(data){
+	//alert(data);
+	var dataObj=eval("("+data+")");
+	//alert(dataObj.os);
+	document.getElementById('os').innerText=dataObj.os;
+	document.getElementById('hostname').innerText=dataObj.vz_status.hostname;
+	document.getElementById('load').innerText=dataObj.vz_status.load_average;
+	document.getElementById('status').innerText=dataObj.vz_status.status;
+	document.getElementById('ip').innerText=dataObj.ip_addresses;
+	document.getElementById('bandwidth').innerText=dataObj.plan_monthly_data/1073741824+'GB';
+	document.getElementById('location').innerText=dataObj.node_location;
+	document.getElementById('refresh').innerText=getLocalTime(dataObj.data_next_reset);
+	document.getElementById('ssh').innerText=dataObj.ssh_port;
+	document.getElementById('usewidth').innerText=dataObj.data_counter/1073741824+'GB';
+	document.getElementById('password').innerText=localStorage.pwd;
+	mui.toast('刷新完成！');
+}
+);
+})
+function getLocalTime(nS) {     
+   return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');     
+} 
+document.querySelector('#setting').addEventListener('tap',function(){
+	mui.openWindow({
+    url:"setting.html",
+    id:"set",
+    show:{
+      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+      aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+      duration:100//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+    },
+    waiting:{
+      autoShow:true,//自动显示等待框，默认为true
+      title:'正在加载...',//等待对话框上显示的提示内容
+    }
+})
+		});
+
+mui.post('http://cloud.bmob.cn/4c7d88c789a79ea7/getLiveInfo',{veid:localStorage.id,key:localStorage.keys},function(data){
+	//alert(data);
+	var dataObj=eval("("+data+")");
+	//alert(dataObj.os);
+	document.getElementById('os').innerText=dataObj.os;
+	document.getElementById('hostname').innerText=dataObj.vz_status.hostname;
+	document.getElementById('load').innerText=dataObj.vz_status.load_average;
+	document.getElementById('status').innerText=dataObj.vz_status.status;
+	document.getElementById('ip').innerText=dataObj.ip_addresses;
+	document.getElementById('bandwidth').innerText=dataObj.plan_monthly_data/1073741824+'GB';
+	document.getElementById('location').innerText=dataObj.node_location;
+	document.getElementById('refresh').innerText=getLocalTime(dataObj.data_next_reset);
+	document.getElementById('ssh').innerText=dataObj.ssh_port;
+	document.getElementById('usewidth').innerText=dataObj.data_counter/1073741824+'GB';
+	document.getElementById('password').innerText=localStorage.pwd;
+	
+}
+);
+
+</script>
+</body>
+</html>

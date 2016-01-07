@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+	    <h1 class="mui-title">设置</h1>
+	</header>
+	<div class="mui-content">
+	    <div class="mui-input-row">
+	        <label>VEID:</label>
+	        <input type="text" class="mui-input-clear"  placeholder="请输入VEID" name='ve' id='veid'>
+	    </div>
+	    <div class="mui-input-row">
+	        <label>Key:</label>
+	        <input type="text" class="mui-input-clear"  placeholder="请输入Key" name='key' id='key'>
+	    </div>
+	    <div class="mui-input-row">
+	        <label>密码:</label>
+	        <input type="text" class="mui-input-clear"  placeholder="请输入密码" name='password' id='password'>
+	    </div>
+		<button type="button" class="mui-btn mui-btn-primary mui-btn-block mui-btn-outlined" id="save">保存</button>
+	   
+	</div>
+<script>
+	document.querySelector('#save').addEventListener('tap',function(){
+		 localStorage.id =document.getElementById('veid').value;
+		 localStorage.keys=document.getElementById('key').value;
+		 localStorage.pwd=document.getElementById('password').value;
+		 alert('保存成功！');
+	})
+</script>
+</body>
+</html>
