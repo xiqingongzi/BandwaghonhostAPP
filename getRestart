@@ -1,0 +1,12 @@
+
+function onRequest(request, response, modules) {
+  
+  var http=modules.oHttp;
+  http('https://api.kiwivm.it7.net/v1/restart?veid='+request.body.veid+'&api_key='+request.body.key, function (error, res, body) {
+    if (!error && res.statusCode == 200) {
+     
+      response.send(body);
+    }
+    })
+}                                                                                                                                                                                                 
+                                                                                                                                              
