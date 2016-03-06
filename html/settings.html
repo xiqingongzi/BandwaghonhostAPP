@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script>
+    	mui.init();
+    	mui.plusReady(function(){
+    		document.getElementById('zhujiceping').addEventListener('tap',function(){
+    			plus.runtime.openURL('http://www.zhujiceping.com');
+    		})
+    		document.getElementById('lianxiwomen').addEventListener('tap',function(){
+    			plus.runtime.openURL('http://wpa.qq.com/msgrd?v=3&uin=894849635&site=qq&menu=yes');
+    		})
+    	})
+    	
+    </script>
+      
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">设置</h1>
+	</header>
+	<div class="mui-content">
+	        <ul class="mui-table-view mui-grid-view mui-grid-9">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+	                <a href="manager.html">
+	                    <div class="mui-media-body">管理</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+	                <a href="help.html">
+	                    <div class="mui-media-body">帮助</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+	                <a id='zhujiceping'>
+	                    <div class="mui-media-body">主机测评</div>
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+	                <a id="lianxiwomen">
+	                    <div class="mui-media-body">联系作者</div>
+	                </a>
+	            </li>
+
+	        </ul>
+	        <img src="http://7xrjfu.com1.z0.glb.clouddn.com/bandwagongapp-ad1.png" width="100%"/>
+	        <img src="http://7xrjfu.com1.z0.glb.clouddn.com/bandwagongapp-ad2.png" width="100%"/>
+	</div>
+	<script>
+		
+	</script>
+</body>
+</html>

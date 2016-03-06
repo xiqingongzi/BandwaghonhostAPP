@@ -1,0 +1,87 @@
+{
+  "index.html": {
+    "resources": [
+      "html/settings.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "html/help.html",
+      "res/img/server.png",
+      "js/zepto.min.js"
+    ],
+    "refer": [
+      "html/settings.html",
+      "html/help.html",
+      "html/host.html"
+    ]
+  },
+  "html/settings.html": {
+    "resources": [
+      "index.html",
+      "html/help.html",
+      "html/add.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "html/manager.html",
+      "html/about.html",
+      "html/zjcp.html"
+    ],
+    "refer": [
+      "index.html",
+      "html/help.html",
+      "html/add.html",
+      "html/manager.html",
+      "html/about.html",
+      "html/zjcp.html"
+    ]
+  },
+  "html/help.html": {
+    "resources": [
+      "html/settings.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "index.html",
+      "res/img/help-1.png"
+    ],
+    "refer": [
+      "html/settings.html",
+      "index.html"
+    ]
+  },
+  "html/manager.html": {
+    "resources": [
+      "html/settings.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "html/settings.html"
+    ]
+  },
+  "html/about.html": {
+    "resources": [
+      "html/settings.html"
+    ],
+    "refer": [
+      "html/settings.html"
+    ]
+  },
+  "html/host.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "html/zjcp.html": {
+    "resources": [
+      "html/settings.html"
+    ],
+    "refer": [
+      "html/settings.html"
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="UTF-8">
+      	mui.init();
+      	num=localStorage.length;
+      	
+    </script>
+    <style type="text/css">
+    	.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">管理主机</h1>
+	</header>
+	<div class="mui-content">
+	   <div class="mui-content-padded">
+		<h4>新增主机</h4>
+		<div class="mui-input-row">
+		    <label>识别名</label>
+		    <input type="text" class="mui-input-clear" placeholder="填写您可以识别的名称" id='name'>
+		</div>
+		<div class="mui-input-row">
+		    <label>VEID</label>
+		    <input type="text" class="mui-input-clear" placeholder="填写获取到的VEID" id='veid'>
+		</div>
+		<div class="mui-input-row">
+		    <label>Key</label>
+		    <input type="text" class="mui-input-clear" placeholder="填写获取到的VEID" id='key'>
+		</div>
+		<button type="button" class="mui-btn mui-btn-green mui-btn-block" id='add'>新增</button>
+	   </div>
+	   <div class="mui-content-padded">
+		<h4>删除主机</h4>
+		<div id='select'></div>		
+	   </div>
+	</div>
+	<script>
+		document.getElementById('add').addEventListener('tap',function(){
+			json=getjsoninfo();
+			localStorage.setItem(num,json);
+			mui.toast('添加成功！');
+		});
+		function getjsoninfo(){
+			var obj={};
+			obj.name=document.getElementById('name').value
+			obj.veid=document.getElementById('veid').value
+			obj.key=document.getElementById('key').value
+			json=JSON.stringify(obj);
+			return json;			
+		};
+
+    	var _select = document.createElement("SELECT");
+		for (var i=0;i<localStorage.length;i++)
+		{
+			data=localStorage.getItem(i);
+			var obj = JSON.parse(data);
+			var _option = new Option(obj.name,i);
+			_select.options.add(_option);
+			
+		}
+	_select.onchange = function(){
+   	 			var btnArray = ['否', '是'];
+				mui.confirm('是否删除主机'+_select.value, '删除主机！', btnArray, function(e) {
+					if (e.index == 1) {
+						localStorage.removeItem(_select.value);
+						mui.toast('主机删除成功!!');
+					} else {
+						mui.toast('用户拒绝删除!!');
+					}
+				})
+ 	 }
+	 document.getElementById('select').appendChild(_select);
+	</script>
+</body>
+</html>
